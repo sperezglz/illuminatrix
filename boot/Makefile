@@ -3,7 +3,7 @@
 all: file.img
 
 boot.o:
-	gcc -c  -g boot.S -o boot.o
+	cpp boot.s -o boot.i; as -g boot.i -o boot.o
 file.img: boot.o
 	ld --oformat binary -o file.img -T boot.ld boot.o
 run: file.img
